@@ -208,20 +208,20 @@ let baselineShiftToString = value =>
   | Baseline => "baseline"
   | Super => "super"
   | Sub => "sub"
-  | Percentage(pct) => string_of_float(pct) ++ "%"
+  | Percentage(pct) => Js.Float.toString(pct) ++ "%"
   | Length(length) => lengthToString(length)
   };
 
 type bezierAnchorPoint = (float, float, float, float);
 
 let bezierAnchorPointToString = ((x1, y1, x2, y2)) =>
-  string_of_float(x1)
+  Js.Float.toString(x1)
   ++ " "
-  ++ string_of_float(y1)
+  ++ Js.Float.toString(y1)
   ++ " "
-  ++ string_of_float(x2)
+  ++ Js.Float.toString(x2)
   ++ " "
-  ++ string_of_float(y2);
+  ++ Js.Float.toString(y2);
 
 type calcMode =
   | Discrete
@@ -570,7 +570,7 @@ let fontSizeAdjustToString = value =>
   switch (value) {
   | None => commonAttr.none
   | Inherit => commonAttr.inherit_
-  | Adjust(aspect) => string_of_float(aspect)
+  | Adjust(aspect) => Js.Float.toString(aspect)
   };
 
 type fontStretch =
@@ -756,7 +756,7 @@ type opacity =
 let opacityToString = value =>
   switch (value) {
   | Inherit => commonAttr.inherit_
-  | Opacity(opacity) => string_of_float(opacity)
+  | Opacity(opacity) => Js.Float.toString(opacity)
   };
 
 type rendering =
